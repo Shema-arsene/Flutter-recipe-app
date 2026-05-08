@@ -33,6 +33,20 @@ class _HomePageState extends State<HomePage> {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
+          // All
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: FilledButton(
+              onPressed: () {
+                setState(() {
+                  _mealTypeFilter = "";
+                });
+              },
+              child: const Text("All"),
+            ),
+          ),
+
+          // Snack
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: FilledButton(
