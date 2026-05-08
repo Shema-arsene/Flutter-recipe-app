@@ -10,6 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String _mealTypeFilter = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +36,11 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: FilledButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  _mealTypeFilter = "Snack";
+                });
+              },
               child: const Text("🥕 Snack"),
             ),
           ),
@@ -43,7 +49,11 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: FilledButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  _mealTypeFilter = "Breakfast";
+                });
+              },
               child: const Text("🥞 Breakfast"),
             ),
           ),
@@ -52,7 +62,11 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: FilledButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  _mealTypeFilter = "Lunch";
+                });
+              },
               child: const Text("🍴 Lunch"),
             ),
           ),
@@ -61,7 +75,11 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: FilledButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  _mealTypeFilter = "Dinner";
+                });
+              },
               child: const Text("🍽️ Dinner"),
             ),
           ),
@@ -73,7 +91,7 @@ class _HomePageState extends State<HomePage> {
   Widget _recipesList() {
     return Expanded(
       child: FutureBuilder(
-        future: DataService().getRecipes(),
+        future: DataService().getRecipes(_mealTypeFilter),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
