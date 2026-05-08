@@ -39,4 +39,14 @@ class HTTPService {
       rethrow;
     }
   }
+
+  Future<Response?> get(String path) async {
+    try {
+      final response = await _dio.get(path);
+      return response;
+    } on DioError catch (error) {
+      print('HTTPService GET error: ${error.message}');
+      rethrow;
+    }
+  }
 }
