@@ -9,16 +9,34 @@ class RecipePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.white60,
+        backgroundColor: Colors.white38,
         title: const Text('Recipe Details'),
       ),
-      body: _buildUI(),
+      body: _buildUI(context),
     );
   }
 
-  Widget _buildUI() {
-    return Column(children: []);
+  Widget _buildUI(BuildContext context) {
+    return Column(children: [_recipeImage(context), _recipeDetails()]);
+  }
+
+  Widget _recipeImage(BuildContext context) {
+    return Container(
+      height: MediaQuery.sizeOf(context).height * 0.40,
+      width: MediaQuery.sizeOf(context).width,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage(recipe.image),
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
+  Widget _recipeDetails() {
+    return Container();
   }
 }
