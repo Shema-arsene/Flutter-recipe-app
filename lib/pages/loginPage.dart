@@ -49,13 +49,10 @@ class _LoginPageState extends State<LoginPage> {
       height: MediaQuery.sizeOf(context).height * 0.30,
       child: Form(
         key: _loginFormKey,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: ListView(
           children: [
             TextFormField(
-              initialValue: "emilys",
+              // initialValue: "emilys",
               onSaved: (value) {
                 setState(() {
                   userName = value;
@@ -71,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 20),
             TextFormField(
-              initialValue: "emilyspass",
+              // initialValue: "emilyspass",
               onSaved: (value) {
                 setState(() {
                   password = value;
